@@ -150,8 +150,7 @@ class SemanticMap:
     def load(self, path):
         path = Path(path)
         with open(path) as f:
-            content = f.read()
-        data, _ = json.JSONDecoder().raw_decode(content)
+            data = json.load(f)
         self.merge_distance = data.get("merge_distance", self.merge_distance)
         self.objects = []
         for obj_data in data["objects"]:

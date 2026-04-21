@@ -25,9 +25,10 @@ from semantic_navigation.mission_controller import MissionController
 import numpy as np
 
 # ── Config ───────────────────────────────────────────────────────────────────
-MAP_PATH   = "/home/chittin/ros2_ws/src/ROB530_Project/semantic_navigation/data/semantic_maps/latest.json"
-OUTPUT_DIR = "data/experiments"
-EXCEL_PATH = "/mnt/c/Users/Anushna/Downloads/testing_sheet.xlsx"
+_SCRIPTS_DIR = Path(__file__).parent
+MAP_PATH   = str(_SCRIPTS_DIR.parent / "data" / "semantic_maps" / "latest.json")
+OUTPUT_DIR = str(_SCRIPTS_DIR / "data" / "experiments")
+EXCEL_PATH = None  # set to an xlsx path to enable Excel export, e.g. "/path/to/results.xlsx"
 
 GROUND_TRUTH = {
     "red cylinder":   (-2.00,  2.00),
@@ -368,8 +369,9 @@ def main():
 
     print(f"\nSaved combined results to:\n  {json_path}\n  {csv_path}")
 
-    # ── 4. Append to Excel ───────────────────────────────────────────────────
-    append_to_excel(loc_stats, exp_metrics, EXCEL_PATH)
+    # ── 4. Append to Excel (optional) ────────────────────────────────────────
+    if EXCEL_PATH:
+        append_to_excel(loc_stats, exp_metrics, EXCEL_PATH)
 
 
 if __name__ == "__main__":

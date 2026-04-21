@@ -3,7 +3,7 @@ Full system launch for Vision-Language Grounded Navigation.
 ROB 530 Project - Team 21
 
 Launches in order:
-  1. Gazebo with our 5-room house world
+  1. Gazebo with single_room world (default; override with world_file arg)
   2. TurtleBot3 Waffle Pi robot spawned into that world
   3. Robot state publisher (TF tree from URDF)
   4. Cartographer SLAM
@@ -54,11 +54,6 @@ def generate_launch_description():
     nav2_params = os.path.join(config_dir, "nav2_params.yaml")
     rviz_config = os.path.join(nav2_bringup_dir, "rviz", "nav2_default_view.rviz")
 
-    # Use the pre-processed URDF from turtlebot3_gazebo for robot_state_publisher (TF tree).
-    # The turtlebot3_description URDF uses xacro ${namespace} macros and has no Gazebo plugins.
-    #urdf_file = os.path.join(tb3_gazebo_dir, "urdf", "turtlebot3_waffle_pi.urdf")
-    #with open(urdf_file, "r") as f:
-        #robot_description = f.read()
     tb3_desc_dir = get_package_share_directory("turtlebot3_description")
     urdf_file = os.path.join(tb3_desc_dir, "urdf", "turtlebot3_waffle_pi.urdf")
     robot_description = xacro.process_file(urdf_file, mappings={"namespace": ""}).toxml()
@@ -121,8 +116,12 @@ def generate_launch_description():
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
                 os.path.join(gazebo_ros_dir, "launch", "gzserver.launch.py")
-            ), #You added thet extra_gazebo_args
-            launch_arguments={"world": world_file, "verbose": "false", "extra_gazebo_args": "-s libgazebo_ros_factory.so -s libgazebo_ros_init.so"}.items(),
+            ),
+            launch_arguments={
+                "world": world_file,
+                "verbose": "false",
+                "extra_gazebo_args": "-s libgazebo_ros_factory.so -s libgazebo_ros_init.so",
+            }.items(),
         ),
 
         # Gazebo client (the GUI window)
