@@ -1,0 +1,25 @@
+# Object list for Grounding DINO detection during exploration
+# Single room with 5 objects
+default_prompt: "red cylinder . blue box . yellow box . white cylinder . green cylinder"
+
+# Ground truth object positions (measured from Gazebo world)
+ground_truth:
+  red_cylinder:
+    position: [-2.00, 2.00, 0.5]
+    label: "red cylinder"
+
+  blue_box:
+    position: [2.00, 2.00, 0.5]
+    label: "blue box"
+
+  yellow_box:
+    position: [2.50, -2.50, 0.5]
+    label: "yellow box"
+
+  white_cylinder:
+    position: [2.50, 0.50, 0.5]
+    label: "white cylinder"
+
+  green_cylinder:
+    position: [-2.00, -2.00, 0.5]
+    label: "green cylinder"

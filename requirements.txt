@@ -1,0 +1,22 @@
+# Core ML dependencies
+torch>=2.0.0
+torchvision>=0.15.0
+transformers>=4.35.0
+
+# Vision
+opencv-python>=4.8.0
+Pillow>=10.0.0
+
+# Scientific
+numpy>=1.24.0
+scipy>=1.10.0
+
+# NLP (optional, for enhanced command parsing)
+spacy>=3.0.0
+
+# Visualization & analysis
+matplotlib>=3.7.0
+PyYAML>=6.0
+
+# Grounding DINO (HuggingFace version — weights auto-download)
+# No separate install needed; uses transformers AutoModel

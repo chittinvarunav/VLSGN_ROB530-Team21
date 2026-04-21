@@ -1,0 +1,173 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="single_room">
+
+    <physics type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+    </physics>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- ============================================ -->
+    <!-- Single room: 8m x 8m with 4-5 obstacles      -->
+    <!-- Robot spawns near center at (0, 0)            -->
+    <!-- ============================================ -->
+
+    <!-- === WALLS === -->
+    <!-- South wall -->
+    <model name="wall_south">
+      <static>true</static>
+      <pose>0 -4 1.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>8.15 0.15 2.5</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>8.15 0.15 2.5</size></box></geometry>
+          <material>
+            <ambient>0.8 0.8 0.7 1</ambient>
+            <diffuse>0.8 0.8 0.7 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- North wall -->
+    <model name="wall_north">
+      <static>true</static>
+      <pose>0 4 1.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>8.15 0.15 2.5</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>8.15 0.15 2.5</size></box></geometry>
+          <material>
+            <ambient>0.8 0.8 0.7 1</ambient>
+            <diffuse>0.8 0.8 0.7 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- West wall -->
+    <model name="wall_west">
+      <static>true</static>
+      <pose>-4 0 1.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>0.15 8.15 2.5</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>0.15 8.15 2.5</size></box></geometry>
+          <material>
+            <ambient>0.8 0.8 0.7 1</ambient>
+            <diffuse>0.8 0.8 0.7 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- East wall -->
+    <model name="wall_east">
+      <static>true</static>
+      <pose>4 0 1.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>0.15 8.15 2.5</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>0.15 8.15 2.5</size></box></geometry>
+          <material>
+            <ambient>0.8 0.8 0.7 1</ambient>
+            <diffuse>0.8 0.8 0.7 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- === OBSTACLES === -->
+
+    <!-- Obstacle 1: Red cylinder (top-left area) -->
+    <model name="red_cylinder">
+      <static>true</static>
+      <pose>-2.0 2.0 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><cylinder><radius>0.4</radius><length>1.0</length></cylinder></geometry></collision>
+        <visual name="visual"><geometry><cylinder><radius>0.4</radius><length>1.0</length></cylinder></geometry>
+          <material>
+            <ambient>0.8 0.1 0.1 1</ambient>
+            <diffuse>0.8 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Obstacle 2: Blue box (top-right area) -->
+    <model name="blue_box">
+      <static>true</static>
+      <pose>2.0 2.0 0.4 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>0.8 0.8 0.8</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>0.8 0.8 0.8</size></box></geometry>
+          <material>
+            <ambient>0.1 0.2 0.8 1</ambient>
+            <diffuse>0.1 0.2 0.8 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Obstacle 3: Green cylinder (bottom-left area) -->
+    <model name="green_cylinder">
+      <static>true</static>
+      <pose>-2.0 -2.0 0.35 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><cylinder><radius>0.3</radius><length>0.7</length></cylinder></geometry></collision>
+        <visual name="visual"><geometry><cylinder><radius>0.3</radius><length>0.7</length></cylinder></geometry>
+          <material>
+            <ambient>0.1 0.7 0.2 1</ambient>
+            <diffuse>0.1 0.7 0.2 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Obstacle 4: Yellow box (bottom-right area) -->
+    <model name="yellow_box">
+      <static>true</static>
+      <pose>2.5 -2.5 0.3 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>0.6 1.0 0.6</size></box></geometry></collision>
+        <visual name="visual"><geometry><box><size>0.6 1.0 0.6</size></box></geometry>
+          <material>
+            <ambient>0.9 0.9 0.1 1</ambient>
+            <diffuse>0.9 0.9 0.1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Obstacle 5: White cylinder (center-right) -->
+    <model name="white_cylinder">
+      <static>true</static>
+      <pose>2.5 0.5 0.6 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><cylinder><radius>0.35</radius><length>1.2</length></cylinder></geometry></collision>
+        <visual name="visual"><geometry><cylinder><radius>0.35</radius><length>1.2</length></cylinder></geometry>
+          <material>
+            <ambient>0.9 0.9 0.9 1</ambient>
+            <diffuse>0.9 0.9 0.9 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Room light -->
+    <light name="room_light" type="point">
+      <pose>0 0 2.4 0 0 0</pose>
+      <diffuse>0.9 0.9 0.9 1</diffuse>
+      <attenuation>
+        <range>10</range>
+        <constant>0.2</constant>
+        <linear>0.04</linear>
+        <quadratic>0.01</quadratic>
+      </attenuation>
+    </light>
+
+  </world>
+</sdf>
