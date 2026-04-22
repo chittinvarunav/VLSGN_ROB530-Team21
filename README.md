@@ -110,6 +110,9 @@ User: "Go to the blue box"
 
 The codebase separates **pure logic** from **ROS2 node wrappers**. Each module has a `module.py` (logic, no ROS imports, fully unit-testable) and a `module_node.py` (ROS subscriber/publisher wiring).
 
+<img width="937" height="530" alt="image" src="https://github.com/user-attachments/assets/174865f7-651f-41e5-b1c0-65b8e8884f78" />
+
+
 | Module | Files | Role |
 |---|---|---|
 | **Mission Controller** | `mission_controller.py` + `_node.py` | Central state machine. States: `IDLE → EXPLORING → DETECTING → NAVIGATING → IDLE`. Coordinates all other modules. |
