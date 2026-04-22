@@ -2,6 +2,8 @@
 
 **ROB 530 — Mobile Robotics · University of Michigan · Team 21**
 
+To see the system in action, check out our demo video: https://www.youtube.com/watch?v=WfOprSfAoKM 
+
 A ROS2 system that enables a TurtleBot3 to autonomously explore an unknown environment, build a semantic map of objects using [Grounding DINO](https://huggingface.co/IDEA-Research/grounding-dino-base), and navigate to any object described in plain English — e.g. *"Go to the blue box"* or *"Find the red cylinder"*.
 
 ---
